@@ -5,37 +5,28 @@
 #include <iostream>
 
 enum eOperandType {
-    Int8,
-    Int16,
-    Int32,
-    Float,
-    Double
+    INT8,
+    INT16,
+    INT32,
+    FLOAT,
+    DOUBLE
 };
-
-typedef struct	s_operand
-{
-  eOperandType	type;
-  std::string	type_name;
-  int		precision;
-  long		max_size;
-  long		min_size;
-} t_operand;
 
 class IOperand {
 public:
-    virtual std::string const& toString() const = 0;
+  virtual std::string const& toString() const = 0;
 
-    virtual int getPrecision() const = 0;
-    virtual eOperandType getType() const = 0;
+  virtual int getPrecision() const = 0;
+  virtual eOperandType getType() const = 0;
 
-    virtual IOperand *operator+(const IOperand &rhs) const = 0;
-    virtual IOperand *operator-(const IOperand &rhs) const = 0;
-    virtual IOperand *operator*(const IOperand &rhs) const = 0;
-    virtual IOperand *operator/(const IOperand &rhs) const = 0;
-    virtual IOperand *operator%(const IOperand &rhs) const = 0;
+  virtual IOperand *operator+(const IOperand &rhs) const = 0;
+  virtual IOperand *operator-(const IOperand &rhs) const = 0;
+  virtual IOperand *operator*(const IOperand &rhs) const = 0;
+  virtual IOperand *operator/(const IOperand &rhs) const = 0;
+  virtual IOperand *operator%(const IOperand &rhs) const = 0;
 
-    virtual ~IOperand() {
-    }
+  virtual ~IOperand() {
+  }
 };
 
 #endif /*__IOPERAND_HPP__ */

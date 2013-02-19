@@ -5,10 +5,10 @@
 ## Login   <paglia_f@epitech.net>
 ##
 ## Started on  Mon Nov 14 10:39:32 2011 floran pagliai
-## Last update Thu Feb 16 15:44:03 2012 floran pagliai
+## Last update Tue Feb 19 13:53:29 2013 floran pagliai
 ##
 
-NAME= 	Abstract_VM
+NAME= 	abstract_VM
 
 SRC=	src/main.cpp\
 	src/Calculator.cpp\
@@ -16,7 +16,7 @@ SRC=	src/main.cpp\
 
 OBJ=	$(SRC:.cpp=.o)
 
-CC=	g++
+CC=	clang++
 
 FLAG=	-W -Wall -Werror
 

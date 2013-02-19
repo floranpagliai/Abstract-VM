@@ -7,16 +7,16 @@
 # include "IOperand.hpp"
 # include "Operand.hpp"
 
-//typedef	std::stack<IOperand *> opStack;
+typedef	std::stack<IOperand *> opStack;
 
-class	Abstract
+class	Calculator
 {
 private:
-  typedef IOperand *(Abstract::*funcPtr)(const std::string &);
+  typedef IOperand *(Calculator::*funcPtr)(const std::string &);
 
 private:
   funcPtr		_funcList[5];
-  std::stack<IOperand *>		_stack;
+  opStack		_stack;
 
 private:
   IOperand		*createInt8(const std::string &value);
@@ -26,11 +26,11 @@ private:
   IOperand		*createDouble(const std::string &value);
 
 public:
-  Abstract();
-  ~Abstract() {}
+  Calculator();
+  ~Calculator() {}
 
   IOperand		*createOperand(eOperandType type, const std::string &value);
-  void			push(IOperand *iop);
+  void			push(IOperand *rhs);
   void			pop();
   IOperand		*dump();
 

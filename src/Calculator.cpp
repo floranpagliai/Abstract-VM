@@ -1,65 +1,65 @@
 #include "Calculator.hpp"
 
-Abstract::Abstract()
+Calculator::Calculator()
 {
-  _funcList[0] = &Abstract::createInt8;
-  _funcList[1] = &Abstract::createInt16;
-  _funcList[2] = &Abstract::createInt32;
-  _funcList[3] = &Abstract::createFloat;
-  _funcList[4] = &Abstract::createDouble;
+  _funcList[0] = &Calculator::createInt8;
+  _funcList[1] = &Calculator::createInt16;
+  _funcList[2] = &Calculator::createInt32;
+  _funcList[3] = &Calculator::createFloat;
+  _funcList[4] = &Calculator::createDouble;
 }
 
-IOperand		*Abstract::createInt8(const std::string &value)
+IOperand		*Calculator::createInt8(const std::string &value)
 {
-  IOperand		*out;
+  IOperand		*operand;
 
-  out = new Operand<char>(Int8, atof(value.c_str()));
-  return (out);
+  operand = new Operand<char>(INT8, atof(value.c_str()));
+  return (operand);
 }
 
-IOperand		*Abstract::createInt16(const std::string &value)
+IOperand		*Calculator::createInt16(const std::string &value)
 {
-  IOperand		*out;
+  IOperand		*operand;
 
-  out = new Operand<short>(Int16, atof(value.c_str()));
-  return (out);
+  operand = new Operand<short>(INT16, atof(value.c_str()));
+  return (operand);
 }
 
-IOperand		*Abstract::createInt32(const std::string &value)
+IOperand		*Calculator::createInt32(const std::string &value)
 {
-  IOperand		*out;
+  IOperand		*operand;
 
-  out = new Operand<int>(Int32, atof(value.c_str()));
-  return (out);
+  operand = new Operand<int>(INT32, atof(value.c_str()));
+  return (operand);
 }
 
-IOperand		*Abstract::createFloat(const std::string &value)
+IOperand		*Calculator::createFloat(const std::string &value)
 {
-  IOperand		*out;
+  IOperand		*operand;
 
-  out = new Operand<float>(Float, atof(value.c_str()));
-  return (out);
+  operand = new Operand<float>(FLOAT, atof(value.c_str()));
+  return (operand);
 }
 
-IOperand		*Abstract::createDouble(const std::string &value)
+IOperand		*Calculator::createDouble(const std::string &value)
 {
-  IOperand		*out;
+  IOperand		*operand;
 
-  out = new Operand<double>(Double, atof(value.c_str()));
-  return (out);
+  operand = new Operand<double>(DOUBLE, atof(value.c_str()));
+  return (operand);
 }
 
-IOperand		*Abstract::createOperand(eOperandType type, const std::string &value)
+IOperand		*Calculator::createOperand(eOperandType type, const std::string &value)
 {
   return ((this->*_funcList[type])(value));
 }
 
-void			Abstract::push(IOperand *iop)
+void			Calculator::push(IOperand *rhs)
 {
-  _stack.push(iop);
+  _stack.push(rhs);
 }
 
-void			Abstract::pop()
+void			Calculator::pop()
 {
   if (_stack.size() <= 0)
     {
@@ -69,14 +69,14 @@ void			Abstract::pop()
   _stack.pop();
 }
 
-IOperand		*Abstract::dump()
+IOperand		*Calculator::dump()
 {
   if (_stack.size() <= 0)
     return (NULL);
   return (_stack.top());
 }
 
-IOperand		*Abstract::add()
+IOperand		*Calculator::add()
 {
   IOperand		*a = dump();
   pop();
@@ -87,7 +87,7 @@ IOperand		*Abstract::add()
   return (dump());
 }
 
-IOperand		*Abstract::sub()
+IOperand		*Calculator::sub()
 {
   IOperand		*a = dump();
   pop();
@@ -98,7 +98,7 @@ IOperand		*Abstract::sub()
   return (dump());
 }
 
-IOperand		*Abstract::mul()
+IOperand		*Calculator::mul()
 {
   IOperand		*a = dump();
   pop();
@@ -109,7 +109,7 @@ IOperand		*Abstract::mul()
   return (dump());
 }
 
-IOperand		*Abstract::div()
+IOperand		*Calculator::div()
 {
   IOperand		*a = dump();
   pop();
@@ -120,7 +120,7 @@ IOperand		*Abstract::div()
   return (dump());
 }
 
-IOperand		*Abstract::mod()
+IOperand		*Calculator::mod()
 {
   IOperand		*a = dump();
   pop();
