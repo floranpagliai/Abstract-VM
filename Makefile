@@ -10,18 +10,19 @@
 
 NAME= 	Abstract_VM
 
-SRC=	src/main.cpp
+SRC=	src/main.cpp\
+	src/Calculator.cpp\
+	src/Operand.cpp
 
 OBJ=	$(SRC:.cpp=.o)
 
-CC=	clang
+CC=	g++
 
-FLAG=	-g -Wall
+FLAG=	-W -Wall -Werror
 
 all:	$(OBJ)
 	$(CC) $(FLAG) -o $(NAME) $(OBJ)
 	make clean
-	clean
 
 clean:
 	rm -f $(OBJ)
