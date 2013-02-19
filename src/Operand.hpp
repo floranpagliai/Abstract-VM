@@ -12,7 +12,6 @@
 #define __OPERAND_HPP__
 
 #include <iostream>
-#include <cstdlib>
 #include <string>
 #include <sstream>
 #include "IOperand.hpp"
@@ -41,7 +40,6 @@ private:
   T		_value;
 
 public:
-
   explicit Operand(eOperandType type, const double &value) {
     _type = type;
     if (value > operands[type].min)
@@ -161,17 +159,60 @@ public:
       break;
     }
     return (operand);
-
   }
 
   virtual IOperand *operator/(const IOperand &rhs) const // div
   {
+IOperand		*operand = NULL;
+    eOperandType	type;
 
+    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
+    switch (type) {
+    case INT8:
+      operand = new Operand<char>(type, _value / atof(rhs.toString().c_str()));
+      break;
+    case INT16:
+      operand = new Operand<short>(type, _value / atof(rhs.toString().c_str()));
+      break;
+    case INT32:
+      operand = new Operand<int>(type, _value / atof(rhs.toString().c_str()));
+      break;
+    case FLOAT:
+      operand = new Operand<float>(type, _value / atof(rhs.toString().c_str()));
+      break;
+    case DOUBLE:
+      operand = new Operand<double>(type, _value / atof(rhs.toString().c_str()));
+      break;
+    }
+    return (operand);
   }
 
   virtual IOperand *operator%(const IOperand &rhs) const // mod
   {
-
+//IOperand		*operand = NULL;
+//    eOperandType	type;
+//
+//    if (_value != 0)
+//        exit(-1);
+//    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
+//    switch (type) {
+//    case INT8:
+//      operand = new Operand<char>(type, _value % atof(rhs.toString().c_str()));
+//      break;
+//    case INT16:
+//      operand = new Operand<short>(type, _value % atof(rhs.toString().c_str()));
+//      break;
+//    case INT32:
+//      operand = new Operand<int>(type, _value % atof(rhs.toString().c_str()));
+//      break;
+//    case FLOAT:
+//      operand = new Operand<float>(type, _value % atof(rhs.toString().c_str()));
+//      break;
+//    case DOUBLE:
+//      operand = new Operand<double>(type, _value % atof(rhs.toString().c_str()));
+//      break;
+//    }
+//    return (operand);
   }
 
   std::ostream &operator<<(std::ostream &os) {

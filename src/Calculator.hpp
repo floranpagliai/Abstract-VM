@@ -11,13 +11,13 @@
 #ifndef __CALCULATOR_HPP__
 #define	__CALCULATOR_HPP__
 
-# include <cstdlib>
-# include <string>
-# include <stack>
-# include "IOperand.hpp"
-# include "Operand.hpp"
+#include <iostream>
+#include <string>
+#include <list>
+#include "IOperand.hpp"
+#include "Operand.hpp"
 
-typedef	std::stack<IOperand *> opStack;
+typedef	std::list<IOperand *> opStack;
 
 class	Calculator
 {

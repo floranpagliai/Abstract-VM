@@ -1,9 +1,9 @@
 //
 // Calculator.cpp for abstract_vm in /home/paglia_f//Dropbox/Epitech/tek2/C++/Abstract-VM/src
-// 
+//
 // Made by floran pagliai
 // Login   <paglia_f@epitech.net>
-// 
+//
 // Started on  Tue Feb 19 16:31:29 2013 floran pagliai
 // Last update Tue Feb 19 17:37:22 2013 floran pagliai
 //
@@ -66,7 +66,7 @@ IOperand		*Calculator::createOperand(eOperandType type, const std::string &value
 
 void			Calculator::push(IOperand *rhs)
 {
-  _stack.push(rhs);
+  _stack.push_front(rhs);
 }
 
 void			*Calculator::pop()
@@ -76,21 +76,21 @@ void			*Calculator::pop()
       std::cout << "Pop on empty stack." << std::endl;
       exit(-1);
     }
-  _stack.pop();
+  _stack.pop_front();
 }
 
 IOperand		*Calculator::get()
 {
   if (_stack.size() <= 0)
     return (NULL);
-  return (_stack.top());
+  return (_stack.front());
 }
 
 IOperand		*Calculator::dump()
 {
   if (_stack.size() <= 0)
     return (NULL);
-  return (_stack.top());
+  return (_stack.front());
 }
 
 IOperand		*Calculator::add()
