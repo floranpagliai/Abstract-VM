@@ -12,7 +12,8 @@ NAME= 	abstract_VM
 
 SRC=	src/main.cpp\
 	src/Calculator.cpp\
-	src/Operand.cpp
+	src/Operand.cpp\
+	src/Exception.cpp
 
 OBJ=	$(SRC:.cpp=.o)
 

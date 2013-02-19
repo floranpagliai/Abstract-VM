@@ -16,6 +16,7 @@
 #include <list>
 #include "IOperand.hpp"
 #include "Operand.hpp"
+#include "exception.hpp"
 
 typedef	std::list<IOperand *> opStack;
 
@@ -44,7 +45,7 @@ public:
   void			push(IOperand *rhs);
   void                  *pop();
   IOperand		*get();
-  IOperand		*dump();
+  void		*dump();
 
   IOperand		*add();
   IOperand		*sub();

@@ -5,6 +5,8 @@
       <df name="src">
         <in>Calculator.cpp</in>
         <in>Calculator.hpp</in>
+        <in>Exception.cpp</in>
+        <in>Exception.hpp</in>
         <in>IOperand.hpp</in>
         <in>Operand.cpp</in>
         <in>Operand.hpp</in>

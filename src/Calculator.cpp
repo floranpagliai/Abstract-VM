@@ -73,6 +73,7 @@ void			*Calculator::pop()
 {
   if (_stack.size() <= 0)
     {
+      throw Exception("Pop on empty stack.");
       std::cout << "Pop on empty stack." << std::endl;
       exit(-1);
     }
@@ -86,11 +87,16 @@ IOperand		*Calculator::get()
   return (_stack.front());
 }
 
-IOperand		*Calculator::dump()
+void		*Calculator::dump()
 {
   if (_stack.size() <= 0)
-    return (NULL);
-  return (_stack.front());
+    {
+      throw Exception("Dump on empty stack.");
+//      std::cout << "Dump on empty stack." << std::endl;
+//      exit(-1);
+    }
+  for (std::list<IOperand *>::iterator it = _stack.begin(); it != _stack.end(); ++it)
+    std::cout << (*it)->toString() << std::endl;
 }
 
 IOperand		*Calculator::add()

@@ -15,6 +15,7 @@
 #include <string>
 #include <sstream>
 #include "IOperand.hpp"
+#include "exception.hpp"
 
 typedef struct s_operand {
   eOperandType	type;
