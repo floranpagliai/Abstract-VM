@@ -1,3 +1,13 @@
+//
+// Operand.hpp for abstract_vm in /home/paglia_f//Dropbox/Epitech/tek2/C++/Abstract-VM/src
+//
+// Made by floran pagliai
+// Login   <paglia_f@epitech.net>
+//
+// Started on  Tue Feb 19 16:31:59 2013 floran pagliai
+// Last update Tue Feb 19 17:14:50 2013 floran pagliai
+//
+
 #ifndef __OPERAND_HPP__
 #define __OPERAND_HPP__
 
@@ -6,6 +16,22 @@
 #include <string>
 #include <sstream>
 #include "IOperand.hpp"
+
+typedef struct s_operand {
+  eOperandType	type;
+  int		precision;
+  long		min;
+  long		max;
+}		t_operand;
+
+static t_operand operands[] =
+  {
+    {INT8, 0 , -128, 127},
+    {INT16, 1, -32768, 32767},
+    {INT32, 2, -2147483648, 2147483647},
+    {FLOAT, 3, -32768, 32767},
+    {DOUBLE, 4, -2147483648, 2147483647},
+  };
 
 template <typename T>
 class Operand : public IOperand {
@@ -18,18 +44,21 @@ public:
 
   explicit Operand(eOperandType type, const double &value) {
     _type = type;
-    if (value > -128 && value < 127)
-      _precision = 0;
-    else if (value > -32768 && value < 32767)
-      _precision = 1;
-    else if (value > -2147483648 && value < 2147483647)
-      _precision = 2;
-    else if (value > -32768 && value < 32767)
-      _precision = 3;
-    else if (value > -12147483648 && value < 2147483647)
-      _precision = 4;
+    if (value > operands[type].min)
+      {
+	if (value < operands[type].max)
+	  _precision = operands[type].precision;
+	else
+	  {
+	    std::cout << "Overflow" << std::endl;
+	    exit(0);
+	  }
+      }
     else
-      exit(0);
+      {
+	std::cout << "Underflow" << std::endl;
+	exit(0);
+      }
     _value = value;
   }
 
@@ -44,7 +73,7 @@ public:
     str->append(ss.str());
     return (*str);
   }
-  
+
   virtual int getPrecision() const {
     return (_precision);
   }
@@ -82,24 +111,67 @@ public:
     return (operand);
   }
 
-  virtual IOperand *operator-(const IOperand &rhs) const // sub
+  virtual IOperand *operator-(const IOperand &rhs) const
   {
-    
+    IOperand		*operand = NULL;
+    eOperandType	type;
+
+    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
+    switch (type) {
+    case INT8:
+      operand = new Operand<char>(type, _value - atof(rhs.toString().c_str()));
+      break;
+    case INT16:
+      operand = new Operand<short>(type, _value - atof(rhs.toString().c_str()));
+      break;
+    case INT32:
+      operand = new Operand<int>(type, _value - atof(rhs.toString().c_str()));
+      break;
+    case FLOAT:
+      operand = new Operand<float>(type, _value - atof(rhs.toString().c_str()));
+      break;
+    case DOUBLE:
+      operand = new Operand<double>(type, _value - atof(rhs.toString().c_str()));
+      break;
+    }
+    return (operand);
   }
 
   virtual IOperand *operator*(const IOperand &rhs) const // mul
   {
-    
+    IOperand		*operand = NULL;
+    eOperandType	type;
+
+    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
+    switch (type) {
+    case INT8:
+      operand = new Operand<char>(type, _value * atof(rhs.toString().c_str()));
+      break;
+    case INT16:
+      operand = new Operand<short>(type, _value * atof(rhs.toString().c_str()));
+      break;
+    case INT32:
+      operand = new Operand<int>(type, _value * atof(rhs.toString().c_str()));
+      break;
+    case FLOAT:
+      operand = new Operand<float>(type, _value * atof(rhs.toString().c_str()));
+      break;
+    case DOUBLE:
+      operand = new Operand<double>(type, _value * atof(rhs.toString().c_str()));
+      break;
+    }
+    return (operand);
+
   }
 
   virtual IOperand *operator/(const IOperand &rhs) const // div
   {
-    
+
   }
 
   virtual IOperand *operator%(const IOperand &rhs) const // mod
   {
-    
+
   }
 
   std::ostream &operator<<(std::ostream &os) {

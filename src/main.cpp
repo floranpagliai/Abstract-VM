@@ -10,16 +10,19 @@ int		main(int ac, char **av)
   Calculator	a;
   IOperand	*op1 = a.createOperand(INT8, "2");
   IOperand	*op2 = a.createOperand(INT8, "2");
-  IOperand	*op3 = a.createOperand(INT8, "130");
+  IOperand	*op3 = a.createOperand(INT8, "3");
 
   a.push(op1);
   a.push(op2);
   a.push(op3);
-  a.push(a.createOperand(DOUBLE, "2.2"));
+  a.push(a.createOperand(INT8, "3"));
 
+  //std::cout << "Dump: " << *(a.dump()) << std::endl;
   std::cout << "Result add: " << *(a.add()) << std::endl;
-  std::cout << "Result add: " << *(a.add()) << std::endl;
-  std::cout << "Result add: " << *(a.add()) << std::endl;
-
+  //std::cout << "Dump: " << *(a.dump()) << std::endl;
+  std::cout << "Result sub: " << *(a.sub()) << std::endl;
+  //std::cout << "Dump: " << *(a.dump()) << std::endl;
+  std::cout << "Result mul: " << *(a.mul()) << std::endl;
+  
   return (0);
 }

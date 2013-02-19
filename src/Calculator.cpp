@@ -1,3 +1,13 @@
+//
+// Calculator.cpp for abstract_vm in /home/paglia_f//Dropbox/Epitech/tek2/C++/Abstract-VM/src
+// 
+// Made by floran pagliai
+// Login   <paglia_f@epitech.net>
+// 
+// Started on  Tue Feb 19 16:31:29 2013 floran pagliai
+// Last update Tue Feb 19 17:37:22 2013 floran pagliai
+//
+
 #include "Calculator.hpp"
 
 Calculator::Calculator()
@@ -59,14 +69,21 @@ void			Calculator::push(IOperand *rhs)
   _stack.push(rhs);
 }
 
-void			Calculator::pop()
+void			*Calculator::pop()
 {
   if (_stack.size() <= 0)
     {
-      std::cout << "Error: Pop on empty stack." << std::endl;
+      std::cout << "Pop on empty stack." << std::endl;
       exit(-1);
     }
   _stack.pop();
+}
+
+IOperand		*Calculator::get()
+{
+  if (_stack.size() <= 0)
+    return (NULL);
+  return (_stack.top());
 }
 
 IOperand		*Calculator::dump()
@@ -78,55 +95,55 @@ IOperand		*Calculator::dump()
 
 IOperand		*Calculator::add()
 {
-  IOperand		*a = dump();
+  IOperand		*a = get();
   pop();
-  IOperand		*b = dump();
+  IOperand		*b = get();
   pop();
 
   push(*a + *b);
-  return (dump());
+  return (get());
 }
 
 IOperand		*Calculator::sub()
 {
-  IOperand		*a = dump();
+  IOperand		*a = get();
   pop();
-  IOperand		*b = dump();
+  IOperand		*b = get();
   pop();
 
   push(*a - *b);
-  return (dump());
+  return (get());
 }
 
 IOperand		*Calculator::mul()
 {
-  IOperand		*a = dump();
+  IOperand		*a = get();
   pop();
-  IOperand		*b = dump();
+  IOperand		*b = get();
   pop();
 
   push(*a * *b);
-  return (dump());
+  return (get());
 }
 
 IOperand		*Calculator::div()
 {
-  IOperand		*a = dump();
+  IOperand		*a = get();
   pop();
-  IOperand		*b = dump();
+  IOperand		*b = get();
   pop();
 
   push(*a / *b);
-  return (dump());
+  return (get());
 }
 
 IOperand		*Calculator::mod()
 {
-  IOperand		*a = dump();
+  IOperand		*a = get();
   pop();
-  IOperand		*b = dump();
+  IOperand		*b = get();
   pop();
 
   push(*a % *b);
-  return (dump());
+  return (get());
 }
