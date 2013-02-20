@@ -15,10 +15,11 @@
 #include <string>
 #include <sstream>
 #include "IOperand.hpp"
-#include "exception.hpp"
+#include "Exception.hpp"
 
 typedef struct s_operand {
   eOperandType	type;
+  std::string   name;
   int		precision;
   long		min;
   long		max;
@@ -26,11 +27,11 @@ typedef struct s_operand {
 
 static t_operand operands[] =
   {
-    {INT8, 0 , -128, 127},
-    {INT16, 1, -32768, 32767},
-    {INT32, 2, -2147483648, 2147483647},
-    {FLOAT, 3, -32768, 32767},
-    {DOUBLE, 4, -2147483648, 2147483647},
+    {INT8, "int8", 0 , -128, 127},
+    {INT16, "int16", 1, -32768, 32767},
+    {INT32, "int32", 2, -2147483648, 2147483647},
+    {FLOAT, "float", 3, -32768, 32767},
+    {DOUBLE, "double", 4, -2147483648, 2147483647},
   };
 
 template <typename T>

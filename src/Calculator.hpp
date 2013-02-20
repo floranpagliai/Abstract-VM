@@ -16,7 +16,7 @@
 #include <list>
 #include "IOperand.hpp"
 #include "Operand.hpp"
-#include "exception.hpp"
+#include "Exception.hpp"
 
 typedef	std::list<IOperand *> opStack;
 

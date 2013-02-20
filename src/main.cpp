@@ -2,7 +2,7 @@
 #include "IOperand.hpp"
 #include "Operand.hpp"
 #include "Calculator.hpp"
-#include "exception.hpp"
+#include "Exception.hpp"
 
 int main(int ac, char **av) {
     (void) ac;
