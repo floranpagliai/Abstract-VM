@@ -14,7 +14,6 @@ int main(int ac, char **av) {
         IOperand *op3 = a.createOperand(INT8, "4");
 
         a.push(op1);
-        a.assert(op1);
         a.push(op2);
         a.push(op3);
         a.push(a.createOperand(INT8, "2"));
