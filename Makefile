@@ -11,6 +11,7 @@
 NAME= 	abstract_VM
 
 SRC=	include/my_atof.cpp\
+	include/my_atoi.cpp\
 	src/main.cpp\
 	src/Calculator.cpp\
 	src/Operand.cpp\

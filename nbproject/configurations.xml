@@ -4,6 +4,7 @@
     <df name="Abstract-VM" root=".">
       <df name="include">
         <in>my_atof.cpp</in>
+        <in>my_atoi.cpp</in>
       </df>
       <df name="src">
         <in>Calculator.cpp</in>
@@ -14,7 +15,6 @@
         <in>Operand.cpp</in>
         <in>Operand.hpp</in>
         <in>main.cpp</in>
-        <in>my_atof.cpp</in>
       </df>
     </df>
     <logicalFolder name="ExternalFiles"

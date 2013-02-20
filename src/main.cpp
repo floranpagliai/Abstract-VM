@@ -9,7 +9,7 @@ int main(int ac, char **av) {
     (void) av;
     try {
         Calculator a;
-        IOperand *op1 = a.createOperand(INT8, "2");
+        IOperand *op1 = a.createOperand(INT8, "0");
         IOperand *op2 = a.createOperand(INT8, "2");
         IOperand *op3 = a.createOperand(INT8, "4");
 
@@ -17,7 +17,7 @@ int main(int ac, char **av) {
         a.assert(op1);
         a.push(op2);
         a.push(op3);
-        a.push(a.createOperand(INT8, "3"));
+        a.push(a.createOperand(INT8, "2"));
 
         std::cout << "Dump: " << std::endl;
         a.dump();
@@ -27,7 +27,7 @@ int main(int ac, char **av) {
         std::cout << "Result sub: " << *(a.sub()) << std::endl;
         std::cout << "Dump: " << std::endl;
         a.dump();
-        std::cout << "Result mul: " << *(a.mul()) << std::endl;
+        std::cout << "Result mod: " << *(a.mod()) << std::endl;
         std::cout << "Result mul: " << *(a.mul()) << std::endl;
     } catch (const Exception &e) {
         std::cerr << "ERROR : " << e.what() << std::endl;

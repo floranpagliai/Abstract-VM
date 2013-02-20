@@ -157,11 +157,14 @@ public:
     return (operand);
   }
 
-  virtual IOperand *operator/(const IOperand &rhs) const // div
+  virtual IOperand *operator/(const IOperand &rhs) const
   {
 IOperand		*operand = NULL;
     eOperandType	type;
+     const Operand		&tmp = static_cast<const Operand &>(rhs);
 
+    if (my_atof(tmp.toString()) == 0)
+      throw Exception("Division by zero.");
     type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
     switch (type) {
     case INT8:
@@ -183,32 +186,21 @@ IOperand		*operand = NULL;
     return (operand);
   }
 
-  virtual IOperand *operator%(const IOperand &rhs) const // mod
+  virtual IOperand *operator%(const IOperand &rhs) const
   {
-//IOperand		*operand = NULL;
-//    eOperandType	type;
-//
-//    if (_value != 0)
-//        exit(-1);
-//    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
-//    switch (type) {
-//    case INT8:
-//      operand = new Operand<char>(type, _value % my_atof(rhs.toString()));
-//      break;
-//    case INT16:
-//      operand = new Operand<short>(type, _value % my_atof(rhs.toString()));
-//      break;
-//    case INT32:
-//      operand = new Operand<int>(type, _value % my_atof(rhs.toString()));
-//      break;
-//    case FLOAT:
-//      operand = new Operand<float>(type, _value % my_atof(rhs.toString()));
-//      break;
-//    case DOUBLE:
-//      operand = new Operand<double>(type, _value % my_atof(rhs.toString()));
-//      break;
-//    }
-//    return (operand);
+      IOperand                  *operand = NULL;
+      eOperandType              type;
+      const Operand		&tmp = static_cast<const Operand &>(rhs);
+
+    if (my_atof(tmp.toString()) == 0)
+      throw Exception("Modulo by zero.");
+    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
+    if (_type == FLOAT || rhs.getType() == FLOAT)
+        throw Exception("Modulo with float.");
+    else if (_type == DOUBLE || rhs.getType() == DOUBLE)
+        throw Exception("Modulo with double.");
+    operand = new Operand(type, (int)_value % my_atoi(tmp.toString()));
+    return (operand);
   }
 
   std::ostream &operator<<(std::ostream &os) {

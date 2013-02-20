@@ -14,7 +14,8 @@
 #include <string>
 #include <iostream>
 
-double my_atof(std::string);
+int     my_atoi(std::string);
+double  my_atof(std::string);
 
 enum eOperandType {
     INT8,
