@@ -145,9 +145,3 @@ IOperand		*Calculator::mod()
   push(*a % *b);
   return (get());
 }
-
-void                    Calculator::assert(IOperand *rhs) {
-//    if (_stack.front() != rhs) {
-//        throw Exception("assert.");
-//    }
-}

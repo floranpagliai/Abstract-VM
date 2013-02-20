@@ -52,8 +52,6 @@ public:
   IOperand		*mul();
   IOperand		*div();
   IOperand		*mod();
-
-  void                  assert(IOperand *rhs);
 };
 
 
