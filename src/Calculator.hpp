@@ -43,15 +43,17 @@ public:
   IOperand		*createOperand(eOperandType type, const std::string &value);
 
   void			push(IOperand *rhs);
-  void                  *pop();
+  void                  pop();
+  void                  dump();
   IOperand		*get();
-  void		*dump();
 
   IOperand		*add();
   IOperand		*sub();
   IOperand		*mul();
   IOperand		*div();
   IOperand		*mod();
+
+  void                  assert(IOperand *rhs);
 };
 
 

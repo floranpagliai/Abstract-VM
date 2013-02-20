@@ -43,21 +43,15 @@ private:
 public:
   explicit Operand(eOperandType type, const double &value) {
     _type = type;
-    if (value > operands[type].min)
+    if (value < operands[type].max)
       {
-	if (value < operands[type].max)
+	if (value > operands[type].min)
 	  _precision = operands[type].precision;
 	else
-	  {
-	    std::cout << "Overflow" << std::endl;
-	    exit(0);
-	  }
+	  throw Exception("Underflow.");
       }
     else
-      {
-	std::cout << "Underflow" << std::endl;
-	exit(0);
-      }
+      throw Exception("Overflow.");
     _value = value;
   }
 

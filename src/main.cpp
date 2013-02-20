@@ -11,9 +11,10 @@ int main(int ac, char **av) {
         Calculator a;
         IOperand *op1 = a.createOperand(INT8, "2");
         IOperand *op2 = a.createOperand(INT8, "2");
-        IOperand *op3 = a.createOperand(INT8, "3");
+        IOperand *op3 = a.createOperand(INT8, "4");
 
         a.push(op1);
+        a.assert(op1);
         a.push(op2);
         a.push(op3);
         a.push(a.createOperand(INT8, "3"));
@@ -31,6 +32,5 @@ int main(int ac, char **av) {
     } catch (const Exception &e) {
         std::cerr << "ERROR : " << e.what() << std::endl;
     }
-
     return (0);
 }

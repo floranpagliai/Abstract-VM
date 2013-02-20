@@ -69,15 +69,19 @@ void			Calculator::push(IOperand *rhs)
   _stack.push_front(rhs);
 }
 
-void			*Calculator::pop()
+void			Calculator::pop()
 {
   if (_stack.size() <= 0)
-    {
       throw Exception("Pop on empty stack.");
-      std::cout << "Pop on empty stack." << std::endl;
-      exit(-1);
-    }
   _stack.pop_front();
+}
+
+void                    Calculator::dump()
+{
+  if (_stack.size() <= 0)
+      throw Exception("Dump on empty stack.");
+  for (std::list<IOperand *>::iterator it = _stack.begin(); it != _stack.end(); ++it)
+    std::cout << (*it)->toString() << std::endl;
 }
 
 IOperand		*Calculator::get()
@@ -85,18 +89,6 @@ IOperand		*Calculator::get()
   if (_stack.size() <= 0)
     return (NULL);
   return (_stack.front());
-}
-
-void		*Calculator::dump()
-{
-  if (_stack.size() <= 0)
-    {
-      throw Exception("Dump on empty stack.");
-//      std::cout << "Dump on empty stack." << std::endl;
-//      exit(-1);
-    }
-  for (std::list<IOperand *>::iterator it = _stack.begin(); it != _stack.end(); ++it)
-    std::cout << (*it)->toString() << std::endl;
 }
 
 IOperand		*Calculator::add()
@@ -152,4 +144,10 @@ IOperand		*Calculator::mod()
 
   push(*a % *b);
   return (get());
+}
+
+void                    Calculator::assert(IOperand *rhs) {
+//    if (_stack.front() != rhs) {
+//        throw Exception("assert.");
+//    }
 }
