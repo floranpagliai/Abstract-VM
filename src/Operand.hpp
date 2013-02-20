@@ -87,19 +87,19 @@ public:
     type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
     switch (type) {
     case INT8:
-      operand = new Operand<char>(type, _value + atof(rhs.toString().c_str()));
+      operand = new Operand<char>(type, _value + my_atof(rhs.toString()));
       break;
     case INT16:
-      operand = new Operand<short>(type, _value + atof(rhs.toString().c_str()));
+      operand = new Operand<short>(type, _value + my_atof(rhs.toString()));
       break;
     case INT32:
-      operand = new Operand<int>(type, _value + atof(rhs.toString().c_str()));
+      operand = new Operand<int>(type, _value + my_atof(rhs.toString()));
       break;
     case FLOAT:
-      operand = new Operand<float>(type, _value + atof(rhs.toString().c_str()));
+      operand = new Operand<float>(type, _value + my_atof(rhs.toString()));
       break;
     case DOUBLE:
-      operand = new Operand<double>(type, _value + atof(rhs.toString().c_str()));
+      operand = new Operand<double>(type, _value + my_atof(rhs.toString()));
       break;
     }
     return (operand);
@@ -113,19 +113,19 @@ public:
     type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
     switch (type) {
     case INT8:
-      operand = new Operand<char>(type, _value - atof(rhs.toString().c_str()));
+      operand = new Operand<char>(type, _value - my_atof(rhs.toString()));
       break;
     case INT16:
-      operand = new Operand<short>(type, _value - atof(rhs.toString().c_str()));
+      operand = new Operand<short>(type, _value - my_atof(rhs.toString()));
       break;
     case INT32:
-      operand = new Operand<int>(type, _value - atof(rhs.toString().c_str()));
+      operand = new Operand<int>(type, _value - my_atof(rhs.toString()));
       break;
     case FLOAT:
-      operand = new Operand<float>(type, _value - atof(rhs.toString().c_str()));
+      operand = new Operand<float>(type, _value - my_atof(rhs.toString()));
       break;
     case DOUBLE:
-      operand = new Operand<double>(type, _value - atof(rhs.toString().c_str()));
+      operand = new Operand<double>(type, _value - my_atof(rhs.toString()));
       break;
     }
     return (operand);
@@ -139,19 +139,19 @@ public:
     type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
     switch (type) {
     case INT8:
-      operand = new Operand<char>(type, _value * atof(rhs.toString().c_str()));
+      operand = new Operand<char>(type, _value * my_atof(rhs.toString()));
       break;
     case INT16:
-      operand = new Operand<short>(type, _value * atof(rhs.toString().c_str()));
+      operand = new Operand<short>(type, _value * my_atof(rhs.toString()));
       break;
     case INT32:
-      operand = new Operand<int>(type, _value * atof(rhs.toString().c_str()));
+      operand = new Operand<int>(type, _value * my_atof(rhs.toString()));
       break;
     case FLOAT:
-      operand = new Operand<float>(type, _value * atof(rhs.toString().c_str()));
+      operand = new Operand<float>(type, _value * my_atof(rhs.toString()));
       break;
     case DOUBLE:
-      operand = new Operand<double>(type, _value * atof(rhs.toString().c_str()));
+      operand = new Operand<double>(type, _value * my_atof(rhs.toString()));
       break;
     }
     return (operand);
@@ -165,19 +165,19 @@ IOperand		*operand = NULL;
     type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
     switch (type) {
     case INT8:
-      operand = new Operand<char>(type, _value / atof(rhs.toString().c_str()));
+      operand = new Operand<char>(type, _value / my_atof(rhs.toString()));
       break;
     case INT16:
-      operand = new Operand<short>(type, _value / atof(rhs.toString().c_str()));
+      operand = new Operand<short>(type, _value / my_atof(rhs.toString()));
       break;
     case INT32:
-      operand = new Operand<int>(type, _value / atof(rhs.toString().c_str()));
+      operand = new Operand<int>(type, _value / my_atof(rhs.toString()));
       break;
     case FLOAT:
-      operand = new Operand<float>(type, _value / atof(rhs.toString().c_str()));
+      operand = new Operand<float>(type, _value / my_atof(rhs.toString()));
       break;
     case DOUBLE:
-      operand = new Operand<double>(type, _value / atof(rhs.toString().c_str()));
+      operand = new Operand<double>(type, _value / my_atof(rhs.toString()));
       break;
     }
     return (operand);
@@ -193,19 +193,19 @@ IOperand		*operand = NULL;
 //    type = _precision >= rhs.getPrecision() ? _type : rhs.getType();
 //    switch (type) {
 //    case INT8:
-//      operand = new Operand<char>(type, _value % atof(rhs.toString().c_str()));
+//      operand = new Operand<char>(type, _value % my_atof(rhs.toString()));
 //      break;
 //    case INT16:
-//      operand = new Operand<short>(type, _value % atof(rhs.toString().c_str()));
+//      operand = new Operand<short>(type, _value % my_atof(rhs.toString()));
 //      break;
 //    case INT32:
-//      operand = new Operand<int>(type, _value % atof(rhs.toString().c_str()));
+//      operand = new Operand<int>(type, _value % my_atof(rhs.toString()));
 //      break;
 //    case FLOAT:
-//      operand = new Operand<float>(type, _value % atof(rhs.toString().c_str()));
+//      operand = new Operand<float>(type, _value % my_atof(rhs.toString()));
 //      break;
 //    case DOUBLE:
-//      operand = new Operand<double>(type, _value % atof(rhs.toString().c_str()));
+//      operand = new Operand<double>(type, _value % my_atof(rhs.toString()));
 //      break;
 //    }
 //    return (operand);

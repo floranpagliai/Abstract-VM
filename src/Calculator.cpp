@@ -23,7 +23,7 @@ IOperand		*Calculator::createInt8(const std::string &value)
 {
   IOperand		*operand;
 
-  operand = new Operand<char>(INT8, atof(value.c_str()));
+  operand = new Operand<char>(INT8, my_atof(value));
   return (operand);
 }
 
@@ -31,7 +31,7 @@ IOperand		*Calculator::createInt16(const std::string &value)
 {
   IOperand		*operand;
 
-  operand = new Operand<short>(INT16, atof(value.c_str()));
+  operand = new Operand<short>(INT16, my_atof(value));
   return (operand);
 }
 
@@ -39,7 +39,7 @@ IOperand		*Calculator::createInt32(const std::string &value)
 {
   IOperand		*operand;
 
-  operand = new Operand<int>(INT32, atof(value.c_str()));
+  operand = new Operand<int>(INT32, my_atof(value));
   return (operand);
 }
 
@@ -47,7 +47,7 @@ IOperand		*Calculator::createFloat(const std::string &value)
 {
   IOperand		*operand;
 
-  operand = new Operand<float>(FLOAT, atof(value.c_str()));
+  operand = new Operand<float>(FLOAT, my_atof(value));
   return (operand);
 }
 
@@ -55,7 +55,7 @@ IOperand		*Calculator::createDouble(const std::string &value)
 {
   IOperand		*operand;
 
-  operand = new Operand<double>(DOUBLE, atof(value.c_str()));
+  operand = new Operand<double>(DOUBLE, my_atof(value));
   return (operand);
 }
 
