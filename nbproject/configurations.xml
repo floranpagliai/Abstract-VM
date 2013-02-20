@@ -2,6 +2,10 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df name="Abstract-VM" root=".">
+      <df name="include">
+        <in>my_atof.cpp</in>
+        <in>my_atoi.cpp</in>
+      </df>
       <df name="src">
         <in>Calculator.cpp</in>
         <in>Calculator.hpp</in>

@@ -10,10 +10,13 @@
 
 NAME= 	abstract_VM
 
-SRC=	src/main.cpp\
+SRC=	include/my_atof.cpp\
+	include/my_atoi.cpp\
+	src/main.cpp\
 	src/Calculator.cpp\
 	src/Operand.cpp\
 	src/Exception.cpp
+
 
 OBJ=	$(SRC:.cpp=.o)
 
