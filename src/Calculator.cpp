@@ -64,6 +64,13 @@ IOperand		*Calculator::createOperand(eOperandType type, const std::string &value
   return ((this->*_funcList[type])(value));
 }
 
+IOperand		*Calculator::get()
+{
+  if (_stack.size() <= 0)
+    return (NULL);
+  return (_stack.front());
+}
+
 void			Calculator::push(IOperand *rhs)
 {
   _stack.push_front(rhs);
@@ -84,14 +91,7 @@ void                    Calculator::dump()
     std::cout << (*it)->toString() << std::endl;
 }
 
-IOperand		*Calculator::get()
-{
-  if (_stack.size() <= 0)
-    return (NULL);
-  return (_stack.front());
-}
-
-IOperand		*Calculator::add()
+void		Calculator::add()
 {
   if (_stack.size() <= 0)
     throw Exception("Caclulation without two parameters in stack.");
@@ -101,10 +101,9 @@ IOperand		*Calculator::add()
   pop();
 
   push(*a + *b);
-  return (get());
 }
 
-IOperand		*Calculator::sub()
+void		Calculator::sub()
 {
   if (_stack.size() <= 0)
     throw Exception("Caclulation without two parameters in stack.");
@@ -114,10 +113,9 @@ IOperand		*Calculator::sub()
   pop();
 
   push(*a - *b);
-  return (get());
 }
 
-IOperand		*Calculator::mul()
+void		Calculator::mul()
 {
   if (_stack.size() <= 0)
     throw Exception("Caclulation without two parameters in stack.");
@@ -127,10 +125,9 @@ IOperand		*Calculator::mul()
   pop();
 
   push(*a * *b);
-  return (get());
 }
 
-IOperand		*Calculator::div()
+void		Calculator::div()
 {
   if (_stack.size() <= 0)
     throw Exception("Caclulation without two parameters in stack.");
@@ -140,10 +137,9 @@ IOperand		*Calculator::div()
   pop();
 
   push(*a / *b);
-  return (get());
 }
 
-IOperand		*Calculator::mod()
+void		Calculator::mod()
 {
   if (_stack.size() <= 0)
     throw Exception("Caclulation without two parameters in stack.");
@@ -153,5 +149,4 @@ IOperand		*Calculator::mod()
   pop();
 
   push(*a % *b);
-  return (get());
 }

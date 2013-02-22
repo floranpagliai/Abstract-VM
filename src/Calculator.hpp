@@ -18,40 +18,40 @@
 #include "Operand.hpp"
 #include "Exception.hpp"
 
-typedef	std::list<IOperand *> opStack;
+typedef std::list<IOperand *> opStack;
 
-class	Calculator
-{
+class Calculator {
 private:
-  typedef IOperand *(Calculator::*funcPtr)(const std::string &);
-
-private:
-  funcPtr		_funcList[5];
-  opStack		_stack;
+    typedef IOperand *(Calculator::*funcPtr)(const std::string &);
+    funcPtr _funcList[5];
+    opStack _stack;
 
 private:
-  IOperand		*createInt8(const std::string &value);
-  IOperand		*createInt16(const std::string &value);
-  IOperand		*createInt32(const std::string &value);
-  IOperand		*createFloat(const std::string &value);
-  IOperand		*createDouble(const std::string &value);
+    IOperand *createInt8(const std::string &value);
+    IOperand *createInt16(const std::string &value);
+    IOperand *createInt32(const std::string &value);
+    IOperand *createFloat(const std::string &value);
+    IOperand *createDouble(const std::string &value);
 
 public:
-  Calculator();
-  ~Calculator() {}
+    Calculator();
 
-  IOperand		*createOperand(eOperandType type, const std::string &value);
+    ~Calculator() {
+    }
 
-  void			push(IOperand *rhs);
-  void                  pop();
-  void                  dump();
-  IOperand		*get();
+    IOperand *createOperand(eOperandType type, const std::string &value);
 
-  IOperand		*add();
-  IOperand		*sub();
-  IOperand		*mul();
-  IOperand		*div();
-  IOperand		*mod();
+    IOperand *get();
+
+    void push(IOperand *rhs);
+    void pop();
+    void dump();
+
+    void add();
+    void sub();
+    void mul();
+    void div();
+    void mod();
 };
 
 
