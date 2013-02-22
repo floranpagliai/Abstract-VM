@@ -12,6 +12,7 @@
         <in>Exception.cpp</in>
         <in>Exception.hpp</in>
         <in>IOperand.hpp</in>
+        <in>Lexer.hpp</in>
         <in>Operand.cpp</in>
         <in>Operand.hpp</in>
         <in>main.cpp</in>

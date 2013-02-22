@@ -5,7 +5,7 @@
 // Login   <paglia_f@epitech.net>
 //
 // Started on  Tue Feb 19 16:31:29 2013 floran pagliai
-// Last update Tue Feb 19 17:37:22 2013 floran pagliai
+// Last update Thu Feb 21 15:34:49 2013 floran pagliai
 //
 
 #include "Calculator.hpp"
@@ -93,6 +93,8 @@ IOperand		*Calculator::get()
 
 IOperand		*Calculator::add()
 {
+  if (_stack.size() <= 0)
+    throw Exception("Caclulation without two parameters in stack.");
   IOperand		*a = get();
   pop();
   IOperand		*b = get();
@@ -104,6 +106,8 @@ IOperand		*Calculator::add()
 
 IOperand		*Calculator::sub()
 {
+  if (_stack.size() <= 0)
+    throw Exception("Caclulation without two parameters in stack.");
   IOperand		*a = get();
   pop();
   IOperand		*b = get();
@@ -115,6 +119,8 @@ IOperand		*Calculator::sub()
 
 IOperand		*Calculator::mul()
 {
+  if (_stack.size() <= 0)
+    throw Exception("Caclulation without two parameters in stack.");
   IOperand		*a = get();
   pop();
   IOperand		*b = get();
@@ -126,6 +132,8 @@ IOperand		*Calculator::mul()
 
 IOperand		*Calculator::div()
 {
+  if (_stack.size() <= 0)
+    throw Exception("Caclulation without two parameters in stack.");
   IOperand		*a = get();
   pop();
   IOperand		*b = get();
@@ -137,6 +145,8 @@ IOperand		*Calculator::div()
 
 IOperand		*Calculator::mod()
 {
+  if (_stack.size() <= 0)
+    throw Exception("Caclulation without two parameters in stack.");
   IOperand		*a = get();
   pop();
   IOperand		*b = get();
