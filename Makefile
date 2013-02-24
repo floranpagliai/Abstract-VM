@@ -15,7 +15,8 @@ SRC=	include/my_atof.cpp\
 	src/main.cpp\
 	src/Calculator.cpp\
 	src/Operand.cpp\
-	src/Exception.cpp
+	src/Exception.cpp\
+	src/Lexer.cpp
 
 
 OBJ=	$(SRC:.cpp=.o)

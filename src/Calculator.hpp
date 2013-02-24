@@ -22,7 +22,7 @@ typedef std::list<IOperand *> opStack;
 
 class Calculator {
 private:
-    typedef IOperand *(Calculator::*funcPtr)(const std::string &);
+typedef IOperand *(Calculator::*funcPtr)(const std::string &);
     funcPtr _funcList[5];
     opStack _stack;
 
