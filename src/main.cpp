@@ -16,10 +16,9 @@ int main(int ac, char **av) {
             if (!file) {
                 throw Exception("File not found");
             }
-            do {
-                getline(file, line);
+            while (getline(file, line)) {
                 lexer.addLine(line);
-            } while (line != "exit" && line != ";;");
+            }
             file.close();
             lexer.execLines();
         } else {
