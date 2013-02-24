@@ -68,7 +68,6 @@ void Lexer::execLines() {
             c.dump();
     }
     if (line != "exit") {
-        std::cout << "test" << std::endl;
         throw Exception("No exit instruction found.");
     }
 }
